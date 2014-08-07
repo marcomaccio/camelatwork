@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cxf="http://camel.apache.org/schema/cxf"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+         http://camel.apache.org/schema/cxf
+         http://camel.apache.org/schema/cxf/camel-cxf.xsd">
+
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    
+    <!--  no longer needed from > cxf 2.4.0 just kept here for documentation purpuses
+    <import resource="classpath:META-INF/cxf/cxf-extension-http-jetty.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-extension-jaxrs-binding.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml"/>
+    -->
+
+<!-- For production in OSGI Container ${url.rest.service} needs to be empty -->
+<!-- For debugging ${url.rest.service} needs to be http://localhost:8090 -->
+    <cxf:rsServer id="BookStoreRESTEndpoint"
+        address="${url.rest.service}/webservice/rest"
+        serviceClass="com.camelatwork.components.cxfrs.services.impl.BookStoreRESTServiceImpl">
+        <cxf:schemaLocations>
+            <cxf:schemaLocation>classpath:META-INF/xsd/bookTO.xsd</cxf:schemaLocation>
+        </cxf:schemaLocations>
+    </cxf:rsServer>
+
+
+    <bean id="BookStoreRESTServiceImpl"
+        class="com.camelatwork.components.cxfrs.services.impl.BookStoreRESTServiceImpl"/>
+
+    <!--
+    <bean id="webRestInterceptor"
+    class="com.camelatwork.components.cxfrs.interceptor.BookStoreRESTInterceptor" />
+    -->
+    
+    <bean id="requestMappingProcessor" 
+        class="com.camelatwork.components.cxfrs.web.processors.RequestMappingProcessor"
+        depends-on="BookStoreRESTServiceImpl" >
+		<constructor-arg ref="BookStoreRESTServiceImpl" />
+	</bean>
+</beans>

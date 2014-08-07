@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	<!-- Import the file in which it's declared the CXFRS Endpoint Server
+	<import resource="classpath:META-INF/camelrun/camel-cxf.xml"/>  -->
+
+	<!-- Declaration of a property resource configurer
+		that resolves placeholders in bean property values of context definitions -->
+	<bean id="propertyPlaceholder" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:caw_components_cache.properties</value>
+		</property>
+	</bean>
+
+	<!-- camel context -->
+    <camel:camelContext id="CacheContext" xmlns="http://camel.apache.org/schema/spring">
+        <camel:propertyPlaceholder id="properties" location="classpath:caw_components_cache.properties" />
+        <routeBuilder ref="BookStoreCacheRoute" />
+    </camel:camelContext>
+
+    <bean id="BookStoreCacheRoute" class="com.camelatwork.components.cache.routes.BookStoreCacheRoute"/>
+    <!--  camel web rest routes -->
+    <!--  <bean id="BookStoreCacheRoute" class="com.camelatwork.components.cache.routes.BookStoreCacheRoute" init-method="listProperties">
+        <property name="bookStoreCacheRouteProperties" ref="BookStoreCacheRouteProperties" />
+    </bean>
+    -->
+    <!-- camel web rest routes class properties
+    <bean id="BookStoreCacheRouteProperties" class="com.camelatwork.components.cache.properties.BookStoreCacheRouteProperties">
+        <property name="feedbackQueue" value="${CAW.components.cxfrs.feedback.queue}" />
+    </bean>
+    -->
+
+
+</beans>

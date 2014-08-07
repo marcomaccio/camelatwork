@@ -1,0 +1,16 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.camelatwork</groupId>
+    <artifactId>camelatwork</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>components</artifactId>
+  <packaging>pom</packaging>
+  <name>CAMEL AT WORK (CAW) :: COMPONENTS</name>
+  <description>This Modules will contains all the examples related to the apache-camel components</description>
+  <modules>
+  	<module>cxfrs</module>
+      <module>cache</module>
+  </modules>
+</project>

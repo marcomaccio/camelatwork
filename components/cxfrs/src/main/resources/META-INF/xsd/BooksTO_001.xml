@@ -1,0 +1,17 @@
+<to:booksTO xmlns:to="http://components.camelatwork.com/model/to">
+  <!--1 or more repetitions:-->
+  <to:bookTO id="1">
+    <!--Zero or more repetitions:-->
+    <to:chapter chapterId="1">
+        <to:title>Chapter 1</to:title>
+    </to:chapter>
+
+    <to:chapter chapterId="2">
+        <to:title>Chapter 2</to:title>
+    </to:chapter>
+
+    <to:chapter chapterId="2">
+        <to:title>Chapter 2</to:title>
+    </to:chapter>
+    </to:bookTO>
+</to:booksTO>

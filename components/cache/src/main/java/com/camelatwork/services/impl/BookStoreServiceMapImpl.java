@@ -35,7 +35,7 @@ public class BookStoreServiceMapImpl implements BookStoreService
     public Book getBook(Long id)
     {
         Book book = null;
-
+        book = bookMap.get(id);
         return book;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

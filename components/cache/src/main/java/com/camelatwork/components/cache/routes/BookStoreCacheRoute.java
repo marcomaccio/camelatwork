@@ -1,10 +1,8 @@
 package com.camelatwork.components.cache.routes;
 
 import org.apache.camel.LoggingLevel;
-import org.apache.camel.builder.NotifyBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.cache.CacheConstants;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

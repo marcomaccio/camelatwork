@@ -3,40 +3,32 @@
   <parent>
     <groupId>com.camelatwork</groupId>
     <artifactId>components</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
   </parent>
   
   <artifactId>cxfrs</artifactId>
-  <name>CAMEL AT WORK :: Components :: CXFRS</name>
+  <name>CAMEL AT WORK :: COMPONENTS :: CXFRS</name>
   <description>This module will describe how to use camel-cxf to create REST services</description>
-  <url>cxfrs</url>
+  <url>/cxfrs</url>
   
   <build>
       <plugins>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>${maven-compiler-plugin-version}</version>
+            <version>${maven-compiler-plugin.version}</version>
             <configuration>
-              <source>1.6</source>
-              <target>1.6</target>
+                <source>${source.java.compliancy.version}</source>
+                <target>${target.java.compliancy.version}</target>
             </configuration>
           </plugin>
 
-        <!-- allows the routes to be ran via 'mvn camel:run' -->
-        <plugin>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-maven-plugin</artifactId>
-            <version>${camel-version}</version>
-            <configuration>
-                <applicationContextUri>META-INF/camelrun/camel-context.xml</applicationContextUri>
-            </configuration>
-        </plugin>
+
 	    <!-- generate java from xsd -->
         <plugin>
             <groupId>org.jvnet.jaxb2.maven2</groupId>
             <artifactId>maven-jaxb2-plugin</artifactId>
-            <version>0.8.2</version>
+            <version>${maven-jaxb2-plugin.version}</version>
             <executions>
                 <execution>
                     <goals>
@@ -55,7 +47,7 @@
         <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>build-helper-maven-plugin</artifactId>
-            <version>1.7</version>
+            <version>${build-helper-maven-plugin.version}</version>
             <executions>
                 <execution>
                     <id>add-source</id>
@@ -73,7 +65,16 @@
         </plugin>
         
         
-        		
+        <!-- allows the routes to be ran via 'mvn camel:run' -->
+        <plugin>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-maven-plugin</artifactId>
+            <version>${camel.version}</version>
+            <configuration>
+                <applicationContextUri>META-INF/camelrun/camel-context.xml</applicationContextUri>
+            </configuration>
+        </plugin>
+
 		<!-- Allows the example to be run via 'mvn compile exec:java' 
 		 <plugin>
 			<groupId>org.codehaus.mojo</groupId>
@@ -86,43 +87,40 @@
 		 </plugin>
 		-->
 		
-    </plugins>
-  </build>
+        </plugins>
+    </build>
   
-  <organization>
-  	<name>Marmac</name>
-  	<url>http://www.marmac.name</url>
-  </organization>
-  
-  <dependencies>
-  	<dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-jaxb</artifactId>
-      <version>${camel-version}</version>
-    </dependency>
-  	<dependency>
-  		<groupId>org.apache.camel</groupId>
-  		<artifactId>camel-cxf</artifactId>
-  		<version>${camel-version}</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.apache.camel</groupId>
-  		<artifactId>camel-cxf-transport</artifactId>
-  		<version>${camel-version}</version>
-  	</dependency>
-  	
-  	<!-- needed to run CXF standalone with Jetty as HTTP server -->
-    <dependency>
-      <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-transports-http-jetty</artifactId>
-      <version>${cxf-version}</version>
-    </dependency>
 
-    <dependency>
-      <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-frontend-jaxrs</artifactId>
-      <version>${cxf-version}</version>
-    </dependency>
-  </dependencies>
+  
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jaxb</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-cxf</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-cxf-transport</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+
+        <!-- needed to run CXF standalone with Jetty as HTTP server -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http-jetty</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+    </dependencies>
   
 </project>

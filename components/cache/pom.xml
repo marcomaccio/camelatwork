@@ -5,12 +5,12 @@
     <parent>
         <artifactId>components</artifactId>
         <groupId>com.camelatwork</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cache</artifactId>
-    <name>CAMEL AT WORK :: Components :: Cache</name>
+    <name>CAMEL AT WORK :: COMPONENTS :: CACHE</name>
     <description>Camel and Cache</description>
     <url>cxfrs</url>
 
@@ -29,10 +29,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>${source.java.compliancy.version}</source>
+                    <target>${target.java.compliancy.version}</target>
                 </configuration>
             </plugin>
 
@@ -40,7 +40,7 @@
             <plugin>
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-maven-plugin</artifactId>
-                <version>${camel-version}</version>
+                <version>${camel.version}</version>
                 <configuration>
                     <applicationContextUri>META-INF/camelrun/camel-context.xml</applicationContextUri>
                 </configuration>
@@ -63,24 +63,18 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-core</artifactId>
-            <version>${camel-version}</version>
+            <version>${camel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-spring</artifactId>
-            <version>${camel-version}</version>
+            <version>${camel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-cache</artifactId>
-            <version>${camel-version}</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-test</artifactId>
-            <version>${camel-version}</version>
+            <version>${camel.version}</version>
         </dependency>
     </dependencies>
+
 </project>

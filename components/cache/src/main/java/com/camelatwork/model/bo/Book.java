@@ -1,6 +1,7 @@
 package com.camelatwork.model.bo;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,5 +30,27 @@ public class Book   implements Serializable
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(id, book.id) &&
+                Objects.equals(title, book.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                '}';
     }
 }

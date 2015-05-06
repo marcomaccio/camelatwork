@@ -41,7 +41,7 @@ public class MySecondTest extends CamelTestSupport
         //template.sendBodyAndHeader("seda:bookstore","Camel at work by Marco Maccio", "bookId", "Camel_at_work");
 
         LOGGER.debug("Set the matching on seda:provisioning");
-        boolean matches = notifyProvisioning.matches(1, TimeUnit.SECONDS);
+        boolean matches = notifyProvisioning.matches(5, TimeUnit.SECONDS);
         LOGGER.debug("Matches value: " + matches);
 
         assertTrue(matches);

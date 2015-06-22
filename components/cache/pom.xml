@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cache</artifactId>
-    <name>CAMEL AT WORK :: COMPONENTS :: CACHE</name>
+    <name>CAMEL AT WORK (CAW) :: COMPONENTS :: CACHE</name>
     <description>Camel and Cache</description>
     <url>cxfrs</url>
 

@@ -41,24 +41,28 @@
     </scm>
 
     <distributionManagement>
+
         <snapshotRepository>
-            <id>marmac-m2-repository-snapshot</id>
+            <id>marmac-m2-rms</id>
             <name>MARMAC Maven 2 Repository Snapshot</name>
-            <url>http://repo.maccio-ch.homelinux.net/content/repositories/snapshots/</url>
+            <url>http://repo.maccio-ch.homelinux.net/nexus/content/repositories/snapshots/</url>
             <uniqueVersion>false</uniqueVersion>
             <layout>default</layout>
         </snapshotRepository>
+
         <repository>
-            <id>marmac-m2-repository-release</id>
+            <id>marmac-m2-rms</id>
             <name>MARMAC Maven 2 Repository Release</name>
-            <url>http://repo.maccio-ch.homelinux.net/content/repositories/releases/</url>
+            <url>http://repo.maccio-ch.homelinux.net/nexus/content/repositories/releases/</url>
             <uniqueVersion>false</uniqueVersion>
             <layout>default</layout>
         </repository>
+
         <site>
             <id>marmac-github-docs-website</id>
             <url>https://github.com/marcomaccio/camelatwork/tree/gh-pages</url>
         </site>
+
     </distributionManagement>
 
     <issueManagement>
@@ -127,6 +131,8 @@
         <jdepend-maven-plugin.version>2.0-beta-2</jdepend-maven-plugin.version>
         <findbugs-maven-plugin.version>2.5.2</findbugs-maven-plugin.version>
         <jacoco-maven-plugin.version>0.6.3.201306030806</jacoco-maven-plugin.version>
+
+        <sonar-maven-plugin.version>4.5.2</sonar-maven-plugin.version>
 
     </properties>
 
@@ -232,6 +238,11 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <groupId>org.codehaus.sonar</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>${sonar-maven-plugin.version}</version>
+            </plugin>
 
         </plugins>
     </build>
@@ -353,6 +364,29 @@
        </plugins>
 
     </reporting>
+
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <sonar.jdbc.url>jdbc:mysql://192.168.10.15:3306/sonarqube?useUnicode=true</sonar.jdbc.url>
+                <sonar.jdbc.username>sonarqube</sonar.jdbc.username>
+                <sonar.jdbc.password>Sonar@2014!</sonar.jdbc.password>
+                <sonar.host.url>http://192.168.10.201:9000/sonarqube</sonar.host.url>
+                <!-- <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>  Ensure you run mvn install before sonar:sonar -->
+                <sonar.language>java</sonar.language>
+                <sonar.scm.disabled>true</sonar.scm.disabled>
+                <sonar.scm-stats.enabled>false</sonar.scm-stats.enabled>
+                <sonar.java.codeCoveragePlugin>jacoco</sonar.java.codeCoveragePlugin>
+                <sonar.surefire.reportsPath>/target/surefire-reports</sonar.surefire.reportsPath>
+                <sonar.jacoco.reportPath>${project.build.directory}/jacoco-reports/jacoco-ut.execc</sonar.jacoco.reportPath>    <!-- This is the default, put here to be explicit -->
+                <sonar.jacoco.itReportPath>${project.build.directory}/jacoco-reports/jacoco-it.exec</sonar.jacoco.itReportPath>
+            </properties>
+        </profile>
+    </profiles>
 
 
 </project>

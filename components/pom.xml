@@ -17,6 +17,7 @@
   <modules>
   	  <module>cxfrs</module>
       <module>cache</module>
+    <module>bindy</module>
   </modules>
 
 

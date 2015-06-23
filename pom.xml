@@ -361,6 +361,12 @@
             <version>0.7.2.201409121644</version>
         </plugin>
 
+        <plugin>
+          <groupId>org.codehaus.sonar</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>${sonar-maven-plugin.version}</version>
+        </plugin>
+
        </plugins>
 
     </reporting>

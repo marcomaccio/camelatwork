@@ -132,7 +132,8 @@
         <findbugs-maven-plugin.version>2.5.2</findbugs-maven-plugin.version>
         <jacoco-maven-plugin.version>0.6.3.201306030806</jacoco-maven-plugin.version>
 
-        <sonar-maven-plugin.version>2.6</sonar-maven-plugin.version>
+        <sonar-maven-plugin.version>4.5.2</sonar-maven-plugin.version>
+        <sonar-jacoco-listeners.version>3.2</sonar-jacoco-listeners.version>
 
     </properties>
 
@@ -185,11 +186,16 @@
 
         <pluginManagement>
             <plugins>
-              <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>${versions-maven-plugin.version}</version>
-              </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>${versions-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.sonar</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${sonar-maven-plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -241,7 +247,7 @@
             <plugin>
                 <groupId>org.codehaus.sonar</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>${sonar-maven-plugin.version}</version>
+
             </plugin>
 
         </plugins>
@@ -364,7 +370,7 @@
         <plugin>
           <groupId>org.codehaus.sonar</groupId>
           <artifactId>sonar-maven-plugin</artifactId>
-          <version>${sonar-maven-plugin.version}</version>
+
         </plugin>
 
        </plugins>

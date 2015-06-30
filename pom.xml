@@ -385,9 +385,7 @@
             </activation>
             <properties>
                 <sonar.jdbc.url>jdbc:mysql://192.168.10.15:3306/sonarqube?useUnicode=true</sonar.jdbc.url>
-                <sonar.jdbc.username>sonarqube</sonar.jdbc.username>
-                <sonar.jdbc.password>Sonar@2014!</sonar.jdbc.password>
-                <sonar.host.url>http://192.168.10.201:9000/sonarqube</sonar.host.url>
+                <sonar.host.url>http://qms.maccio-ch.homelinux.net/sonarqube</sonar.host.url>
                 <!-- <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>  Ensure you run mvn install before sonar:sonar -->
                 <sonar.language>java</sonar.language>
                 <sonar.scm.disabled>true</sonar.scm.disabled>

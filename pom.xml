@@ -18,14 +18,26 @@
 
     <developers>
         <developer>
-            <id>marmac</id>
+            <id>marcomaccio</id>
             <name>Marco Maccio</name>
+            <email>marco.maccio@marmac.name</email>
             <roles>
                 <role>System Architect</role>
                 <role>Software Architect</role>
                 <role>Developer</role>
             </roles>
         </developer>
+        <developer>
+            <id>marmac</id>
+            <name>Marco Maccio</name>
+            <email>marco.maccio@marmac.name</email>
+            <roles>
+                <role>System Architect</role>
+                <role>Software Architect</role>
+                <role>Developer</role>
+            </roles>
+        </developer>
+
     </developers>
 
     <modules>
@@ -403,27 +415,5 @@
         </plugins>
 
     </reporting>
-
-    <profiles>
-        <profile>
-            <id>sonar</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <sonar.jdbc.url>jdbc:mysql://192.168.10.15:3306/sonarqube?useUnicode=true</sonar.jdbc.url>
-                <sonar.host.url>http://qms.maccio-ch.homelinux.net/sonarqube</sonar.host.url>
-                <!-- <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>  Ensure you run mvn install before sonar:sonar -->
-                <sonar.language>java</sonar.language>
-                <sonar.scm.disabled>true</sonar.scm.disabled>
-                <sonar.scm-stats.enabled>false</sonar.scm-stats.enabled>
-                <sonar.java.codeCoveragePlugin>jacoco</sonar.java.codeCoveragePlugin>
-                <sonar.surefire.reportsPath>/target/surefire-reports</sonar.surefire.reportsPath>
-                <sonar.jacoco.reportPath>${project.build.directory}/jacoco-reports/jacoco-ut.execc</sonar.jacoco.reportPath>    <!-- This is the default, put here to be explicit -->
-                <sonar.jacoco.itReportPath>${project.build.directory}/jacoco-reports/jacoco-it.exec</sonar.jacoco.itReportPath>
-            </properties>
-        </profile>
-    </profiles>
-
 
 </project>

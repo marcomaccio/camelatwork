@@ -12,7 +12,7 @@
 
     <name>CAMEL AT WORK (CAW)</name>
     <description>A Tutorial to ease the Apache Camel Understanding</description>
-    <url>http://www.marmac.name/tutorials/camelatwork</url>
+    <url>http://marcomaccio.github.io/camelatwork/</url>
 
     <inceptionYear>2014</inceptionYear>
 
@@ -129,8 +129,8 @@
 
         <taglist-maven-plugin.version>2.4</taglist-maven-plugin.version>
         <jdepend-maven-plugin.version>2.0-beta-2</jdepend-maven-plugin.version>
-        <findbugs-maven-plugin.version>2.5.2</findbugs-maven-plugin.version>
-        <jacoco-maven-plugin.version>0.6.3.201306030806</jacoco-maven-plugin.version>
+        <findbugs-maven-plugin.version>3.0.0</findbugs-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.7.2.201409121644</jacoco-maven-plugin.version>
 
         <sonar-maven-plugin.version>2.6</sonar-maven-plugin.version>
         <sonar-jacoco-listeners.version>3.2</sonar-jacoco-listeners.version>
@@ -250,80 +250,86 @@
 
             </plugin>
 
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${findbugs-maven-plugin.version}</version>
+            </plugin>
+
         </plugins>
     </build>
 
 
     <!-- REPORTING SECTION - START -->
     <reporting>
-      <outputDirectory>${basedir}/target/site</outputDirectory>
-      <plugins>
+        <outputDirectory>${basedir}/target/site</outputDirectory>
+        <plugins>
 
-        <!-- Java doc plugin with UML Diagram-->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <version>${maven-javadoc-plugin.version}</version>
-            <configuration>
-                <aggregate>true</aggregate>
-                <show>private</show>
-                <show>public</show>
+            <!-- Java doc plugin with UML Diagram-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <configuration>
+                    <aggregate>true</aggregate>
+                    <show>private</show>
+                    <show>public</show>
 
-                <!-- Doclet Library to generate the UML Diagram -->
-                <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
-                <docletArtifact>
-                    <groupId>org.umlgraph</groupId>
-                    <artifactId>umlgraph</artifactId>
-                    <version>${umlgraph.version}</version>
-                </docletArtifact>
+                    <!-- Doclet Library to generate the UML Diagram -->
+                    <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
+                    <docletArtifact>
+                        <groupId>org.umlgraph</groupId>
+                        <artifactId>umlgraph</artifactId>
+                        <version>${umlgraph.version}</version>
+                    </docletArtifact>
 
-                <additionalparam>-views -all</additionalparam>
-                <useStandardDocletOptions>true</useStandardDocletOptions>
-                <failOnError>false</failOnError>
-            </configuration>
-        </plugin>
+                    <additionalparam>-views -all</additionalparam>
+                    <useStandardDocletOptions>true</useStandardDocletOptions>
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
 
-        <!-- Source Xref -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jxr-plugin</artifactId>
-          <version>${maven-jxr-plugin.version}</version>
-        </plugin>
+            <!-- Source Xref -->
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-jxr-plugin</artifactId>
+              <version>${maven-jxr-plugin.version}</version>
+            </plugin>
 
-        <!-- Maven Project Info Reports -->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-project-info-reports-plugin</artifactId>
-            <version>${maven-project-info-reports-plugin.version}</version>
-            <configuration>
-                <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
-                <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-            </configuration>
-        </plugin>
+            <!-- Maven Project Info Reports -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven-project-info-reports-plugin.version}</version>
+                <configuration>
+                    <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+                    <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+                </configuration>
+            </plugin>
 
-        <!-- Unit Test plugin -->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>${maven-surefire-plugin.version}</version>
-        </plugin>
+            <!-- Unit Test plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
 
-        <!-- Test Report generator Plugin-->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-report-plugin</artifactId>
-            <version>${maven-surefire-report-plugin.version}</version>
-        </plugin>
+            <!-- Test Report generator Plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${maven-surefire-report-plugin.version}</version>
+            </plugin>
 
-        <!-- Changes Report Plugin -->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-changes-plugin</artifactId>
-            <version>${maven-changes-plugin.version}</version>
-        </plugin>
+            <!-- Changes Report Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-changes-plugin</artifactId>
+                <version>${maven-changes-plugin.version}</version>
+            </plugin>
 
-          <!-- ChangeLog Report Plugin -->
-          <plugin>
+            <!-- ChangeLog Report Plugin -->
+            <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-changelog-plugin</artifactId>
               <version>${maven-changelog-plugin.version}</version>
@@ -331,74 +337,71 @@
                 <type>range</type>
                 <range>90</range>
               </configuration>
-          </plugin>
+            </plugin>
 
-        <!-- taglist plugin to generate to do List -->
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>taglist-maven-plugin</artifactId>
-          <version>${taglist-maven-plugin.version}</version>
-        </plugin>
+            <!-- taglist plugin to generate to do List -->
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>taglist-maven-plugin</artifactId>
+              <version>${taglist-maven-plugin.version}</version>
+            </plugin>
 
-        <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>jdepend-maven-plugin</artifactId>
-            <version>${jdepend-maven-plugin.version}</version>
-        </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jdepend-maven-plugin</artifactId>
+                <version>${jdepend-maven-plugin.version}</version>
+            </plugin>
 
-        <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>versions-maven-plugin</artifactId>
-            <version>${versions-maven-plugin.version}</version>
-            <reportSets>
-                <reportSet>
-                    <reports>
-                        <report>dependency-updates-report</report>
-                        <report>plugin-updates-report</report>
-                        <report>property-updates-report</report>
-                    </reports>
-                </reportSet>
-            </reportSets>
-        </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions-maven-plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>dependency-updates-report</report>
+                            <report>plugin-updates-report</report>
+                            <report>property-updates-report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
 
-        <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.7.2.201409121644</version>
-        </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin.version}</version>
+            </plugin>
 
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>sonar-maven-plugin</artifactId>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>sonar-maven-plugin</artifactId>
+            </plugin>
 
-        </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${findbugs-maven-plugin.version}</version>
+                <configuration>
+                  <!--
+                      Enables analysis which takes more memory but finds more bugs.
+                      If you run out of memory, changes the value of the effort element
+                      to 'low'.
+                  -->
+                  <effort>Low</effort>
+                  <!-- Build doesn't fail if problems are found -->
+                  <failOnError>false</failOnError>
+                  <!-- Reports all bugs (other values are medium and max) -->
+                  <threshold>Low</threshold>
+                  <!-- Produces XML report -->
+                  <xmlOutput>true</xmlOutput>
+                  <!-- Configures the directory in which the XML report is created -->
+                  <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
+                </configuration>
+            </plugin>
 
-       </plugins>
+        </plugins>
 
     </reporting>
-
-    <profiles>
-        <profile>
-            <id>sonar</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <sonar.jdbc.url>jdbc:mysql://192.168.10.15:3306/sonarqube?useUnicode=true</sonar.jdbc.url>
-                <sonar.jdbc.username>sonarqube</sonar.jdbc.username>
-                <sonar.jdbc.password>Sonar@2014!</sonar.jdbc.password>
-                <sonar.host.url>http://192.168.10.201:9000/sonarqube</sonar.host.url>
-                <!-- <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>  Ensure you run mvn install before sonar:sonar -->
-                <sonar.language>java</sonar.language>
-                <sonar.scm.disabled>true</sonar.scm.disabled>
-                <sonar.scm-stats.enabled>false</sonar.scm-stats.enabled>
-                <sonar.java.codeCoveragePlugin>jacoco</sonar.java.codeCoveragePlugin>
-                <sonar.surefire.reportsPath>/target/surefire-reports</sonar.surefire.reportsPath>
-                <sonar.jacoco.reportPath>${project.build.directory}/jacoco-reports/jacoco-ut.execc</sonar.jacoco.reportPath>    <!-- This is the default, put here to be explicit -->
-                <sonar.jacoco.itReportPath>${project.build.directory}/jacoco-reports/jacoco-it.exec</sonar.jacoco.itReportPath>
-            </properties>
-        </profile>
-    </profiles>
-
 
 </project>

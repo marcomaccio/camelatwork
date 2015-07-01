@@ -7,7 +7,7 @@
   </parent>
   
   <artifactId>cxfrs</artifactId>
-  <name>CAMEL AT WORK :: COMPONENTS :: CXFRS</name>
+  <name>CAMEL AT WORK (CAW) :: COMPONENTS :: CXFRS</name>
   <description>This module will describe how to use camel-cxf to create REST services</description>
   <url>/cxfrs</url>
   

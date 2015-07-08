@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
  */
 public class BCVImportService {
 
-    private static final transient Logger LOGGER = LoggerFactory.getLogger(BCVImportService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(BCVImportService.class);
 
     /**
      *

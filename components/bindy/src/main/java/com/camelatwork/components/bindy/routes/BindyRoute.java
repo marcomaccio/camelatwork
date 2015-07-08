@@ -11,13 +11,14 @@ import org.slf4j.LoggerFactory;
  */
 public class BindyRoute extends RouteBuilder
 {
-    private static final transient Logger LOGGER = LoggerFactory.getLogger(BindyRoute.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(BindyRoute.class);
 
     BindyCsvDataFormat formatBCVExport = new BindyCsvDataFormat(com.camelatwork.components.bindy.model.BCVBankExport.class);
 
     @Override
     public void configure() throws Exception {
 
+        LOGGER.debug("Configure method called...");
 
         from("file:src/main/data/csv?noop=true&delay=10")
             .routeId("Bindy :: BCV Import Service ")

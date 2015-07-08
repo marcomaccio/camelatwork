@@ -15,12 +15,14 @@ import org.slf4j.LoggerFactory;
  */
 public class BookStoreCacheRoute extends RouteBuilder
 {
-    private static final transient Logger LOGGER = LoggerFactory.getLogger(BookStoreCacheRoute.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(BookStoreCacheRoute.class);
 
 
     @Override
-    public void configure() throws Exception
-    {
+    public void configure() throws Exception {
+
+        LOGGER.debug("Configure method has been called ");
+
         from("seda:provisioning")
                 .routeId("BookStore :: Provisioning")
                 .log(LoggingLevel.DEBUG, "${body}  ")

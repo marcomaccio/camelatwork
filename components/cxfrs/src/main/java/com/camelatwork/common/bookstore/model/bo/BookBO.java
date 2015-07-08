@@ -2,6 +2,7 @@ package com.camelatwork.common.bookstore.model.bo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,7 +17,7 @@ public class BookBO implements Serializable
     private Long    id;
     private String  title;
     private Long    firstPublishingYear;
-    private ArrayList<ChapterBO> chapterBOArrayList = new ArrayList<ChapterBO>();
+    private List<ChapterBO> chapterBOArrayList = new ArrayList<ChapterBO>();
 
     /**
      *
@@ -87,7 +88,7 @@ public class BookBO implements Serializable
      *
      * @return
      */
-    public ArrayList<ChapterBO> getChapterBOArrayList() {
+    public List<ChapterBO> getChapterBOArrayList() {
         return chapterBOArrayList;
     }
 

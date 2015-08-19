@@ -12,6 +12,7 @@ import java.util.Date;
 @CsvRecord(separator =",", skipFirstLine = true)
 public class BCVBankExport implements Serializable {
 
+    private static final long serialVersionUID = 1L;
 
     @DataField(pos = 1, pattern = "dd.MM.yyyy")
     private Date executionDate;

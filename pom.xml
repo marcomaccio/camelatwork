@@ -54,7 +54,7 @@
 
     <ciManagement>
         <system>jenkins</system>
-        <url>http://cis.maccio-ch.homelinux.net/jenkins/job/TUTORIALS-CamelAtWork/</url>
+        <url>http://cis.maccio-ch.homelinux.net/jenkins/</url>
         <notifiers>
           <notifier>
             <type>mail</type>

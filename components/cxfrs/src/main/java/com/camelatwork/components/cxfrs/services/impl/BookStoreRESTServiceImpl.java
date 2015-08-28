@@ -1,14 +1,5 @@
 package com.camelatwork.components.cxfrs.services.impl;
 
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
-import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.Marshaller;
-
-import com.camelatwork.common.bookstore.dao.BookStoreDAO;
 import com.camelatwork.components.cxfrs.services.BookStoreRESTService;
 import com.camelatwork.components.model.to.BookTOType;
 import com.camelatwork.components.model.to.BooksTOType;
@@ -17,6 +8,13 @@ import com.camelatwork.components.model.to.ObjectFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.Marshaller;
 import java.io.StringWriter;
 import java.net.URI;
 
@@ -110,15 +108,12 @@ public class BookStoreRESTServiceImpl implements BookStoreRESTService
 	@Path("/book/{bookId}")
 	public Response deleteBook(@PathParam("bookId") Long bookId)
     {
-        boolean deleteFlag = false;
         if (LOG.isDebugEnabled())
         {
             LOG.debug("BookStoreRESTServiceImpl:: delete ------START-------");
             LOG.debug(bookId.toString());
             LOG.debug("BookStoreRESTServiceImpl:: delete Request value "+bookId);
         }
-
-
         return Response.created(URI.create("/")).build();
 	}
 
@@ -130,7 +125,7 @@ public class BookStoreRESTServiceImpl implements BookStoreRESTService
     {
         JAXBElement<BooksTOType> booksTOTypeJAXBElement = null;
 
-        if (LOG.isDebugEnabled()) {LOG.debug(":: getBooks --START--");}
+        LOG.debug(":: getBooks --START--");
 
         ObjectFactory objectFactory = new ObjectFactory();
         BooksTOType booksTOType = objectFactory.createBooksTOType();

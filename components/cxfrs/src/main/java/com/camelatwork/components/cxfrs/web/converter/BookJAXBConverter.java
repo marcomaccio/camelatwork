@@ -17,13 +17,25 @@ import org.slf4j.LoggerFactory;
 @Converter
 public class BookJAXBConverter
 {
-    private static final transient Logger LOG = LoggerFactory.getLogger(BookJAXBConverter.class);
+    /**
+     *
+     */
+    private BookJAXBConverter() {}
 
+    private static final Logger LOG = LoggerFactory.getLogger(BookJAXBConverter.class);
+
+    /**
+     *
+     * @param bookTOType
+     * @param exchange
+     * @return
+     * @throws Exception
+     */
     public static BookBO toBookBO(BookTOType bookTOType, Exchange exchange) throws Exception
     {
         LOG.info("-------TYPE CONVERSION toBookBO Method------START-------");
         BookBO bookBO = new BookBO();
-        if (LOG.isDebugEnabled()){LOG.debug("exchange" + exchange.getIn().getBody().toString());}
+        LOG.debug("exchange" + exchange.getIn().getBody().toString());
 
         return  bookBO;
     }

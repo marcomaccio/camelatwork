@@ -13,16 +13,19 @@ import java.util.List;
  */
 public class BookBO implements Serializable
 {
+    private static final long serialVersionUID = 1L;
 
     private Long    id;
     private String  title;
     private Long    firstPublishingYear;
-    private List<ChapterBO> chapterBOArrayList = new ArrayList<ChapterBO>();
+    private transient List<ChapterBO> chapterBOArrayList = new ArrayList<ChapterBO>();
 
     /**
      *
      */
-    public BookBO() {}
+    public BookBO() {
+
+    }
 
     /**
      *
@@ -96,21 +99,30 @@ public class BookBO implements Serializable
      *
      * @param chapterBOArrayList
      */
-    public void setChapterBOArrayList(ArrayList<ChapterBO> chapterBOArrayList) {
+    public void setChapterBOArrayList(List<ChapterBO> chapterBOArrayList) {
         this.chapterBOArrayList = chapterBOArrayList;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o){
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         BookBO bookBO = (BookBO) o;
 
-        if (firstPublishingYear != null ? !firstPublishingYear.equals(bookBO.firstPublishingYear) : bookBO.firstPublishingYear != null)
+        if (firstPublishingYear != null ? !firstPublishingYear.equals(bookBO.firstPublishingYear) : bookBO.firstPublishingYear != null){
             return false;
-        if (id != null ? !id.equals(bookBO.id) : bookBO.id != null) return false;
-        if (title != null ? !title.equals(bookBO.title) : bookBO.title != null) return false;
+        }
+        if (id != null ? !id.equals(bookBO.id) : bookBO.id != null){
+            return false;
+        }
+        if (title != null ? !title.equals(bookBO.title) : bookBO.title != null){
+            return false;
+        }
 
         return true;
     }

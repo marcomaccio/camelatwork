@@ -3,10 +3,6 @@
  */
 package com.camelatwork.components.cxfrs.web.processors;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
-import com.camelatwork.components.model.to.BooksTOType;
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.apache.camel.Processor;
@@ -14,13 +10,16 @@ import org.apache.camel.component.cxf.common.message.CxfConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 /**
  * @author marcomaccio
  *
  */
 public class RequestMappingProcessor implements Processor 
 {
-private static final transient Logger LOG = LoggerFactory.getLogger(RequestMappingProcessor.class);
+private static final Logger LOG = LoggerFactory.getLogger(RequestMappingProcessor.class);
 	
 	private Class<?> 	beanClass;
 	private Object 		instance;
@@ -49,8 +48,7 @@ private static final transient Logger LOG = LoggerFactory.getLogger(RequestMappi
 			LOG.debug("-------RequestMappingProcessor------START-------");
 		}
 		Message inMessage 	= exchange.getIn();
-		Message outMessage	= exchange.getOut();
-		
+
 		//retrieve the Operation Name that the client has called via the Service Header.
 		String httpMethod 		= inMessage.getHeader(Exchange.HTTP_METHOD, String.class);
 		String httpPath 		= inMessage.getHeader(Exchange.HTTP_PATH, String.class);
@@ -83,8 +81,7 @@ private static final transient Logger LOG = LoggerFactory.getLogger(RequestMappi
 		catch (InvocationTargetException ite) 
 		{
 			LOG.error(ite.getMessage());
-			//Printing the stacktrace of the exception as soon as it happens
-			ite.printStackTrace();
+
 			//TODO: Throw the exception with an appropriate Application Exception.
 			throw new Exception(ite); 
 		}

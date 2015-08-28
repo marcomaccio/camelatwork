@@ -11,13 +11,17 @@ import java.io.Serializable;
  */
 public class ChapterBO implements Serializable
 {
+    private static final long serialVersionUID = 1L;
+
     private Long    id;
     private String  name;
 
     /**
      *
      */
-    public ChapterBO() {}
+    public ChapterBO() {
+
+    }
 
     /**
      *
@@ -58,18 +62,27 @@ public class ChapterBO implements Serializable
      * @param name
      */
     public void setName(String name) {
+
         this.name = name;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         ChapterBO chapterBO = (ChapterBO) o;
 
-        if (id != null ? !id.equals(chapterBO.id) : chapterBO.id != null) return false;
-        if (name != null ? !name.equals(chapterBO.name) : chapterBO.name != null) return false;
+        if (id != null ? !id.equals(chapterBO.id) : chapterBO.id != null) {
+            return false;
+        }
+        if (name != null ? !name.equals(chapterBO.name) : chapterBO.name != null) {
+            return false;
+        }
 
         return true;
     }

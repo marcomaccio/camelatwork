@@ -88,8 +88,8 @@
         </repository>
 
         <site>
-            <id>marmac-github-docs-website</id>
-            <url>https://github.com/marcomaccio/camelatwork/tree/gh-pages</url>
+            <id>marmac-html-sites</id>
+            <url>dav:http://rms.maccio-ch.homelinux.net/nexus/content/sites/mm-html-sites/</url>
         </site>
 
     </distributionManagement>

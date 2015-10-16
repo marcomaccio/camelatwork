@@ -116,7 +116,7 @@
         <slf4j-log4j12.version>1.7.10</slf4j-log4j12.version>
         <log4j.version>1.2.17</log4j.version>
         <junit.version>4.12</junit.version>
-         <wagon-webdav-jackrabbit.version>2.4</wagon-webdav-jackrabbit>
+         <wagon-webdav-jackrabbit.version>2.4</wagon-webdav-jackrabbit.version>
         <!-- Plugin Versions -->
         <versions-maven-plugin.version>2.2</versions-maven-plugin.version>
         <maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>

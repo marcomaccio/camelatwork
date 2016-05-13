@@ -19,7 +19,7 @@
     </bean>
 
     <bean id="myBCVIngestService"
-          class="com.camelatwork.components.bindy.beans.BCVImportService" />
+          class="com.camelatwork.components.bindy.converters.BCVTransactionConverter" />
 
     <!-- camel context -->
     <camel:camelContext id="BindyContext"
@@ -27,7 +27,6 @@
                         xmlns="http://camel.apache.org/schema/spring">
 
         <camel:propertyPlaceholder id="properties" location="classpath:caw_components_bindy.properties" />
-
 
         <routeBuilder ref="bindyRoute" />
 

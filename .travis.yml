@@ -6,7 +6,7 @@ jdk:
   - oraclejdk7
 
 script:
-  - mvn clean install -B -e -V
+  - mvn clean install -B -e -V  --settings settings-travis.xml
 
 cache:
   directories:
@@ -14,3 +14,4 @@ cache:
 
 notifications:
   email: marcus.maccio@gmail.com
+  slack: marmacteam:658FZsYHjVQUVYfWU0Uv0GQF

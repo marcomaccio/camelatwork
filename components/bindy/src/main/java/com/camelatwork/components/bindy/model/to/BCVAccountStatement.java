@@ -1,4 +1,4 @@
-package com.camelatwork.components.bindy.model;
+package com.camelatwork.components.bindy.model.to;
 
 import org.apache.camel.dataformat.bindy.annotation.CsvRecord;
 import org.apache.camel.dataformat.bindy.annotation.DataField;
@@ -9,8 +9,8 @@ import java.util.Date;
 /**
  * Created by marcomaccio on 11/06/2015.
  */
-@CsvRecord(separator =",", skipFirstLine = true)
-public class BCVBankExport implements Serializable {
+@CsvRecord(separator =",",crlf="UNIX", skipFirstLine = true)
+public class BCVAccountStatement implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -18,7 +18,7 @@ public class BCVBankExport implements Serializable {
     private Date executionDate;
 
     @DataField(pos = 2)
-    private String transactions;
+    private String transaction;
 
     @DataField(pos = 3)
     private double debit;
@@ -55,16 +55,16 @@ public class BCVBankExport implements Serializable {
      *
      * @return
      */
-    public String getTransactions() {
-        return transactions;
+    public String getTransaction() {
+        return transaction;
     }
 
     /**
      *
-     * @param transactions
+     * @param transaction
      */
-    public void setTransactions(String transactions) {
-        this.transactions = transactions;
+    public void setTransaction(String transaction) {
+        this.transaction = transaction;
     }
 
     /**
@@ -147,4 +147,17 @@ public class BCVBankExport implements Serializable {
         this.note = note;
     }
 
+
+    @Override
+    public String toString() {
+        return "BCVAccountStatement{" +
+                "executionDate=" + executionDate +
+                ", transaction='" + transaction + '\'' +
+                ", debit=" + debit +
+                ", credit=" + credit +
+                ", valueDate=" + valueDate +
+                ", balance=" + balance +
+                ", note='" + note + '\'' +
+                '}';
+    }
 }

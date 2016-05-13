@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+
+    <!-- Declaration of a property resource configurer
+    		that resolves placeholders in bean property values of context definitions -->
+    <bean id="propertyPlaceholder"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+
+        <property name="location">
+            <value>classpath:caw_components_http4.properties</value>
+        </property>
+
+    </bean>
+
+    <!-- camel context -->
+    <camel:camelContext id="HTTP4Context"
+                        trace="true"
+                        xmlns="http://camel.apache.org/schema/spring">
+
+        <camel:propertyPlaceholder id="properties" location="classpath:caw_components_http4.properties" />
+
+        <routeBuilder ref="myRouteBuilder" />
+
+    </camel:camelContext>
+
+    <bean id="myRouteBuilder" class="com.camelatwork.components.http4.routes.MyRouteBuilder">
+        <property name="routeProperties" ref="myRouteProperties"/>
+    </bean>
+
+    <bean id="myRouteProperties"    class="com.camelatwork.components.http4.properties.MyRouteProperties">
+        <property name="rmsHost"            value="${rms.host}"         />
+        <property name="rmsPort"            value="${rms.port}"         />
+        <property name="rmsContext"         value="${rms.context}"      />
+        <property name="rmsServicesPath"    value="${rms.servicesPath}" />
+        <property name="rmsServiceMethod"   value="${rms.serviceMethod}" />
+        <property name="rmsContentsPath"    value="${rms.contentsPath}" />
+        <property name="rmsRepository"      value="${rms.repository}"   />
+    </bean>
+
+</beans>
